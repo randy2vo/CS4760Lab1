@@ -2,8 +2,12 @@ Name: Randy Vo
 Date: 2/1/2026
 Environment: MobaXterm with Linux. 
 -------------------------------------------------------------------------------------------------------------------
-How to comple the project: 
-	Type "make" in command line. 
+How to comple the project:
+
+Make sure your in the Lab1 directory first (cd Lab1/). 
+
+Type "make" in command line. 
+
 Output will generate two executable files (user and oss).
 	Type "./oss -h" to see the help description. 
 
