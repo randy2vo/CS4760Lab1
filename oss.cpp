@@ -71,15 +71,15 @@ int main(int argc, char* argv[]) {
                 return 0;
 
             case 'n':
-                if (!parsePositiveInt(optarg, n) || n >= 99) {
-                    cerr << "Error: -n requires a positive integer (less than 100)\n";
+                if (!parsePositiveInt(optarg, n) || n >= 80) {
+                    cerr << "Error: -n requires a positive integer (less than 80)\n";
                     return 1;
                 }
                 break;
 
             case 's':
-                if (!parsePositiveInt(optarg, s) || s >= 19) {
-                    cerr << "Error: -s requires a positive integer (less than 20)\n";
+                if (!parsePositiveInt(optarg, s) || s >= 15) {
+                    cerr << "Error: -s requires a positive integer (less than 15)\n";
                     return 1;
                 }
                 break;
@@ -134,6 +134,8 @@ int main(int argc, char* argv[]) {
 
     cout << "OSS summary: launched " << totalLaunched
          << " total child processes\n";
+
+  
 
     return 0;
 }
