@@ -10,8 +10,8 @@ using namespace std;
 static void printHelp(const char* prog) {
     cout << "Usage: " << prog << " [-h] [-n proc] [-s simul] [-t iter]\n"
          << "  -h         Show this help message and exit\n"
-         << "  -n proc    Total number of children to launch\n"
-         << "  -s simul   Max number of children allowed to run simultaneously\n"
+         << "  -n proc    Total number of children to launch (max 80)\n"
+         << "  -s simul   Max number of children allowed to run simultaneously (max 15)\n"
          << "  -t iter    Iterations to pass to ./user\n\n"
          << "Example:\n"
          << "  " << prog << " -n 5 -s 3 -t 7\n";
@@ -71,15 +71,15 @@ int main(int argc, char* argv[]) {
                 return 0;
 
             case 'n':
-                if (!parsePositiveInt(optarg, n)) {
-                    cerr << "Error: -n requires a positive integer\n";
+                if (!parsePositiveInt(optarg, n) || n >= 99) {
+                    cerr << "Error: -n requires a positive integer (less than 100)\n";
                     return 1;
                 }
                 break;
 
             case 's':
-                if (!parsePositiveInt(optarg, s)) {
-                    cerr << "Error: -s requires a positive integer\n";
+                if (!parsePositiveInt(optarg, s) || s >= 19) {
+                    cerr << "Error: -s requires a positive integer (less than 20)\n";
                     return 1;
                 }
                 break;
@@ -114,8 +114,8 @@ int main(int argc, char* argv[]) {
     // Launch remaining children
     while (totalLaunched < n) {
         int status;
-        pid_t done = waitpid(-1, &status, 0);
-        running--;
+        pid_t done = waitpid(-1, &status, 0);	// wait for any child to finish
+        running--;	// free up one slot
 
         pid_t childPid = launchChild(t);
         cout << "OSS PID:" << getpid()
