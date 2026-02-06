@@ -40,4 +40,17 @@ Prompts:
 
 	"Explain to me what this "x" line of code does".  
  
-Summary: The code worked well, I got a better idea of what it's supposed to do. 
+Summary: The code worked well, I got a better idea of what it's supposed to do.
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+The project was managed using git. I commited changes at least once per day while working on it. I started by creating a repository and linked the project
+with my github account via token key. Every changed I made, I added a comment frequently and pushed it to my github online. To view the commit history logs,
+run:
+	git log --oneline --decorate --graph
+
+To see what changed in a given commit, run:
+	git show <commit_id>
+
+  
